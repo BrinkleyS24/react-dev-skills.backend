@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose")
 const morgan = require('morgan')
+const cors = require('cors')
 const app = express();
 const skillsController = require('./controllers/skills')
 
@@ -18,7 +19,7 @@ db.on("disconnected", () => console.log("mongo disconnected"))
 
 app.use(express.json())
 app.use(morgan('dev'));
-
+app.use(cors())
 app.use('/api/skills', skillsController);
 
 
